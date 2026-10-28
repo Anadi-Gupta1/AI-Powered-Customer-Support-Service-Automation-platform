@@ -51,6 +51,16 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-ai: var(--ai);
+  --color-ai-foreground: var(--ai-foreground);
+  --color-chart-6: var(--chart-6);
+  --font-sans: var(--font-sans);
+  --shadow-card: var(--shadow-card);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -62,39 +72,49 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --radius: 0.5rem;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --background: oklch(0.975 0.004 255);
+  --foreground: oklch(0.24 0.03 260);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: oklch(0.24 0.03 260);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --popover-foreground: oklch(0.24 0.03 260);
+  --primary: oklch(0.47 0.17 258);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.955 0.008 255);
+  --secondary-foreground: oklch(0.3 0.04 260);
+  --muted: oklch(0.955 0.006 255);
+  --muted-foreground: oklch(0.52 0.025 258);
+  --accent: oklch(0.95 0.025 255);
+  --accent-foreground: oklch(0.38 0.14 258);
+  --destructive: oklch(0.56 0.21 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --success: oklch(0.55 0.14 155);
+  --success-foreground: oklch(0.99 0 0);
+  --warning: oklch(0.7 0.15 70);
+  --warning-foreground: oklch(0.25 0.05 70);
+  --info: oklch(0.6 0.13 235);
+  --ai: oklch(0.53 0.17 292);
+  --ai-foreground: oklch(0.99 0 0);
+  --border: oklch(0.915 0.008 255);
+  --input: oklch(0.89 0.01 255);
+  --ring: oklch(0.6 0.15 258);
+  --chart-1: oklch(0.47 0.17 258);
+  --chart-2: oklch(0.6 0.13 200);
+  --chart-3: oklch(0.55 0.14 155);
+  --chart-4: oklch(0.7 0.15 70);
+  --chart-5: oklch(0.56 0.21 27);
+  --chart-6: oklch(0.53 0.17 292);
+  --shadow-card: 0 1px 2px oklch(0.24 0.03 260 / 6%), 0 1px 3px oklch(0.24 0.03 260 / 4%);
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.3 0.03 260);
+  --sidebar-primary: oklch(0.47 0.17 258);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.95 0.025 255);
+  --sidebar-accent-foreground: oklch(0.38 0.14 258);
+  --sidebar-border: oklch(0.915 0.008 255);
+  --sidebar-ring: oklch(0.6 0.15 258);
 }
 
 .dark {
@@ -140,5 +160,8 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
   }
 }

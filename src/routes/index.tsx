@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import { Activity, AlertTriangle, CheckCircle2, Clock, FolderOpen, Inbox, RefreshCw, Smile, Sparkles, TimerOff, Plus, UserPlus, Workflow, Download, PlayCircle, Bot } from "lucide-react";
+import { Activity, AlertTriangle, CheckCircle2, Clock, FolderOpen, Inbox, RefreshCw, Smile, Sparkles, TimerOff, Plus, UserPlus, Workflow, Download, PlayCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useSim } from "@/lib/sim/store";
 import { caseSla, countBy, isOpen, fmtDuration, toCsv } from "@/lib/sim/rules";
@@ -39,7 +39,7 @@ function Dashboard() {
     <>
       <PageHeader title="Service Overview" description="Live metrics calculated from the records stored in this simulation."
         actions={<>
-          <Button size="sm" className="h-9" asChild><Link to="/employee"><Bot className="h-4 w-4" /> ▶ Run Full Project Simulation</Link></Button>
+          <Button size="sm" className="h-9" asChild><Link to="/employee">▶ Run Full Project Simulation</Link></Button>
           <Select ariaLabel="Date range" className="w-36" value={range} onChange={setRange} options={[{ value: "7", label: "Last 7 days" }, { value: "30", label: "Last 30 days" }, { value: "90", label: "Last 90 days" }, { value: "all", label: "All time" }]} />
           <Button variant="outline" size="sm" className="h-9" onClick={() => navigate({ to: "/" })} aria-label="Refresh"><RefreshCw className="h-4 w-4" /></Button>
           <Button variant="outline" size="sm" className="h-9" onClick={exportKpis}><Download className="h-4 w-4" /> Export</Button>

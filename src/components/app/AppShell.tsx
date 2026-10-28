@@ -2,7 +2,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
 import {
   LayoutDashboard, LifeBuoy, Users, Package, ShoppingCart, ShieldCheck, BookOpen, Sparkles, Workflow, CheckSquare,
-  Layers, BarChart3, Lock, ScrollText, Settings, PlayCircle, Bell, Search, Menu, PanelLeftClose, PanelLeftOpen, FlaskConical, Clock, FileCode2,
+  Layers, BarChart3, Lock, ScrollText, Settings, PlayCircle, Bell, Search, Menu, PanelLeftClose, PanelLeftOpen, FlaskConical, Clock, FileCode2, Bot,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -36,6 +36,7 @@ const NAV = [
     { to: "/security", label: "Users & Security", icon: Lock },
     { to: "/audit", label: "Activity & Audit", icon: ScrollText },
     { to: "/settings", label: "Settings", icon: Settings },
+    { to: "/employee", label: "AI Employee Demo", icon: Bot },
     { to: "/demo", label: "Demo Mode", icon: PlayCircle },
   ] },
 ] as const;

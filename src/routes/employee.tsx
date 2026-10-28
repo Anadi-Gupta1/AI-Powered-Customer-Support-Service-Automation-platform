@@ -56,6 +56,7 @@ function EmployeePage() {
   const busyRef = useRef(false);
   const runRef = useRef<SimRun | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const execTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const consoleRef = useRef<HTMLDivElement>(null);
 
   // Load persisted progress after hydration.
@@ -66,7 +67,7 @@ function EmployeePage() {
     setRun(r ?? newRun());
   }, []);
   useEffect(() => { runRef.current = run; if (run) try { localStorage.setItem(RUN_KEY, JSON.stringify(run)); } catch { /* ignore */ } }, [run]);
-  useEffect(() => () => { if (timerRef.current) clearTimeout(timerRef.current); }, []);
+  useEffect(() => () => { if (timerRef.current) clearTimeout(timerRef.current); if (execTimerRef.current) clearTimeout(execTimerRef.current); }, []);
   useEffect(() => { consoleRef.current?.scrollTo({ top: consoleRef.current.scrollHeight, behavior: "smooth" }); }, [run?.activity.length]);
 
   const clearTimer = () => { if (timerRef.current) { clearTimeout(timerRef.current); timerRef.current = null; } };
@@ -78,7 +79,7 @@ function EmployeePage() {
     if (isDone(cur.statuses[id]) || cur.statuses[id] === "Waiting for Approval") return;
     busyRef.current = true; setBusy(true);
     setRun((r) => r && { ...r, cursor: idx, selected: idx, startedAt: r.startedAt ?? new Date().toISOString(), statuses: { ...r.statuses, [id]: "Running" } });
-    timerRef.current = setTimeout(() => {
+    execTimerRef.current = setTimeout(() => {
       const latest = runRef.current!;
       const res = runQuiet(executeStep, id, { scenario: latest.scenario, resolutionNotes: latest.resolutionNotes, run: latest });
       const o: StepOutcome = res.data ?? { status: "Failed", level: "failure", view: STEPS[idx].view, narration: { what: STEPS[idx].title, why: "", data: [], rule: "", action: "", result: `FAILED — ${res.message}`, changes: [], next: "Retry" } };

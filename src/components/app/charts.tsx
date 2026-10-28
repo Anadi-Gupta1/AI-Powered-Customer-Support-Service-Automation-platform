@@ -11,9 +11,10 @@ export function BarC({ data, color = COLORS[0], horizontal, height = 240 }: { da
     <ResponsiveContainer width="100%" height={height}>
       <BarChart data={data} layout={horizontal ? "vertical" : "horizontal"} margin={{ left: horizontal ? 20 : 0, right: 8, top: 8 }}>
         <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={!horizontal} horizontal={!!horizontal || true} />
-        {horizontal ? <><XAxis type="number" allowDecimals={false} tick={axis} /><YAxis type="category" dataKey="name" tick={axis} width={110} /></> : <><XAxis dataKey="name" tick={axis} interval={0} angle={data.length > 5 ? -20 : 0} textAnchor={data.length > 5 ? "end" : "middle"} height={data.length > 5 ? 50 : 30} /><YAxis allowDecimals={false} tick={axis} width={30} /></>}
+        <XAxis type={horizontal ? "number" : "category"} dataKey={horizontal ? undefined : "name"} allowDecimals={false} tick={axis} interval={0} angle={!horizontal && data.length > 5 ? -20 : 0} textAnchor={!horizontal && data.length > 5 ? "end" : "middle"} height={!horizontal && data.length > 5 ? 50 : 30} />
+        <YAxis type={horizontal ? "category" : "number"} dataKey={horizontal ? "name" : undefined} allowDecimals={false} tick={axis} width={horizontal ? 110 : 30} />
         <Tooltip {...tip} cursor={{ fill: "var(--muted)" }} />
-        <Bar dataKey="value" name="Cases" fill={color} radius={horizontal ? [0, 4, 4, 0] : [4, 4, 0, 0]} maxBarSize={36} />
+        <Bar dataKey="value" name="Cases" fill={color} radius={horizontal ? [0, 4, 4, 0] : [4, 4, 0, 0]} maxBarSize={36} isAnimationActive={false} />
       </BarChart>
     </ResponsiveContainer>
   );
@@ -24,7 +25,7 @@ export function PieC({ data, height = 240 }: { data: { name: string; value: numb
   return (
     <ResponsiveContainer width="100%" height={height}>
       <PieChart>
-        <Pie data={data} dataKey="value" nameKey="name" innerRadius={50} outerRadius={80} paddingAngle={2}>
+        <Pie data={data} dataKey="value" nameKey="name" innerRadius={50} outerRadius={80} paddingAngle={2} isAnimationActive={false}>
           {data.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
         </Pie>
         <Tooltip {...tip} />
@@ -44,7 +45,7 @@ export function LineC({ data, lines, height = 240 }: { data: Record<string, stri
         <YAxis allowDecimals tick={axis} width={30} />
         <Tooltip {...tip} />
         <Legend wrapperStyle={{ fontSize: 11 }} />
-        {lines.map((l) => <Line key={l.key} type="monotone" dataKey={l.key} name={l.name} stroke={l.color} strokeWidth={2} dot={{ r: 3 }} connectNulls />)}
+        {lines.map((l) => <Line key={l.key} type="monotone" dataKey={l.key} name={l.name} stroke={l.color} strokeWidth={2} dot={{ r: 3 }} connectNulls isAnimationActive={false} />)}
       </LineChart>
     </ResponsiveContainer>
   );

@@ -63,7 +63,7 @@ function EmployeePage() {
   useEffect(() => {
     let r: SimRun | null = null;
     try { r = restoreRun(JSON.parse(localStorage.getItem(RUN_KEY) ?? "null")); } catch { r = null; }
-    if (r && r.activity.length) setRestored(true);
+    if (r && r.activity.length) { setRestored(true); setOverviewOpen(false); }
     setRun(r ?? newRun());
   }, []);
   useEffect(() => { runRef.current = run; if (run) try { localStorage.setItem(RUN_KEY, JSON.stringify(run)); } catch { /* ignore */ } }, [run]);
@@ -123,8 +123,8 @@ function EmployeePage() {
     if (autonomous) setPlaying(true); else if (next >= 0) execute(next);
   };
   const pause = () => { clearTimer(); setPlaying(false); };
-  const resume = () => { if (!waiting) { update({ mode: "autonomous" }); setPlaying(true); } };
-  const nextStep = () => { if (playing) return; if (next >= 0) execute(next); };
+  const resume = () => { setRestored(false); if (!waiting) { update({ mode: "autonomous" }); setPlaying(true); } };
+  const nextStep = () => { setRestored(false); if (playing) return; if (next >= 0) execute(next); };
   const runCurrent = () => { if (playing) return; const st = run.statuses[selStep.id]; if (st === "Not Started" || st === "Failed") execute(run.selected); };
   const prevStep = () => update({ selected: Math.max(0, run.selected - 1) });
   const fwdView = () => update({ selected: Math.min(STEPS.length - 1, run.selected + 1) });

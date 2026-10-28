@@ -14,3 +14,4 @@
 - Permission checks live inside actions (`guard`), not just in UI. Why: centralized authorization, denials are audited.
 - AI is a deterministic mock in `src/lib/sim/ai.ts`. Why: no paid AI or external calls; keep as fallback if a real provider is added.
 - Business rules are covered by `src/test/sim-rules.test.ts`; update it when rules change.
+- AI Employee Simulation engine lives in `src/lib/sim/employee.ts`: each step calls real actions on a cloned state and commits only on success; run progress persists separately in localStorage. Why: honest, idempotent, refresh-safe demo runs.

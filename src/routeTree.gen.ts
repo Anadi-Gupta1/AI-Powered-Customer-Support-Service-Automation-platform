@@ -10,7 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AssistantRouteImport } from './routes/assistant'
+import { Route as AutomationRouteImport } from './routes/automation'
+import { Route as KnowledgeRouteImport } from './routes/knowledge'
 import { Route as ProductsRouteImport } from './routes/products'
+import { Route as PromptsRouteImport } from './routes/prompts'
+import { Route as WarrantyRouteImport } from './routes/warranty'
 import { Route as CasesIndexRouteImport } from './routes/cases.index'
 import { Route as CasesIdRouteImport } from './routes/cases.$id'
 import { Route as CustomersIndexRouteImport } from './routes/customers.index'
@@ -23,9 +28,34 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AssistantRoute = AssistantRouteImport.update({
+  id: '/assistant',
+  path: '/assistant',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AutomationRoute = AutomationRouteImport.update({
+  id: '/automation',
+  path: '/automation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KnowledgeRoute = KnowledgeRouteImport.update({
+  id: '/knowledge',
+  path: '/knowledge',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductsRoute = ProductsRouteImport.update({
   id: '/products',
   path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PromptsRoute = PromptsRouteImport.update({
+  id: '/prompts',
+  path: '/prompts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WarrantyRoute = WarrantyRouteImport.update({
+  id: '/warranty',
+  path: '/warranty',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CasesIndexRoute = CasesIndexRouteImport.update({
@@ -61,7 +91,12 @@ const OrdersIdRoute = OrdersIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/assistant': typeof AssistantRoute
+  '/automation': typeof AutomationRoute
+  '/knowledge': typeof KnowledgeRoute
   '/products': typeof ProductsRoute
+  '/prompts': typeof PromptsRoute
+  '/warranty': typeof WarrantyRoute
   '/cases/$id': typeof CasesIdRoute
   '/customers/$id': typeof CustomersIdRoute
   '/orders/$id': typeof OrdersIdRoute
@@ -71,7 +106,12 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/assistant': typeof AssistantRoute
+  '/automation': typeof AutomationRoute
+  '/knowledge': typeof KnowledgeRoute
   '/products': typeof ProductsRoute
+  '/prompts': typeof PromptsRoute
+  '/warranty': typeof WarrantyRoute
   '/cases/$id': typeof CasesIdRoute
   '/customers/$id': typeof CustomersIdRoute
   '/orders/$id': typeof OrdersIdRoute
@@ -82,7 +122,12 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/assistant': typeof AssistantRoute
+  '/automation': typeof AutomationRoute
+  '/knowledge': typeof KnowledgeRoute
   '/products': typeof ProductsRoute
+  '/prompts': typeof PromptsRoute
+  '/warranty': typeof WarrantyRoute
   '/cases/$id': typeof CasesIdRoute
   '/customers/$id': typeof CustomersIdRoute
   '/orders/$id': typeof OrdersIdRoute
@@ -94,7 +139,12 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/assistant'
+    | '/automation'
+    | '/knowledge'
     | '/products'
+    | '/prompts'
+    | '/warranty'
     | '/cases/$id'
     | '/customers/$id'
     | '/orders/$id'
@@ -104,7 +154,12 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/assistant'
+    | '/automation'
+    | '/knowledge'
     | '/products'
+    | '/prompts'
+    | '/warranty'
     | '/cases/$id'
     | '/customers/$id'
     | '/orders/$id'
@@ -114,7 +169,12 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/assistant'
+    | '/automation'
+    | '/knowledge'
     | '/products'
+    | '/prompts'
+    | '/warranty'
     | '/cases/$id'
     | '/customers/$id'
     | '/orders/$id'
@@ -125,7 +185,12 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AssistantRoute: typeof AssistantRoute
+  AutomationRoute: typeof AutomationRoute
+  KnowledgeRoute: typeof KnowledgeRoute
   ProductsRoute: typeof ProductsRoute
+  PromptsRoute: typeof PromptsRoute
+  WarrantyRoute: typeof WarrantyRoute
   CasesIdRoute: typeof CasesIdRoute
   CustomersIdRoute: typeof CustomersIdRoute
   OrdersIdRoute: typeof OrdersIdRoute
@@ -143,11 +208,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/assistant': {
+      id: '/assistant'
+      path: '/assistant'
+      fullPath: '/assistant'
+      preLoaderRoute: typeof AssistantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/automation': {
+      id: '/automation'
+      path: '/automation'
+      fullPath: '/automation'
+      preLoaderRoute: typeof AutomationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/knowledge': {
+      id: '/knowledge'
+      path: '/knowledge'
+      fullPath: '/knowledge'
+      preLoaderRoute: typeof KnowledgeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/products': {
       id: '/products'
       path: '/products'
       fullPath: '/products'
       preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prompts': {
+      id: '/prompts'
+      path: '/prompts'
+      fullPath: '/prompts'
+      preLoaderRoute: typeof PromptsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/warranty': {
+      id: '/warranty'
+      path: '/warranty'
+      fullPath: '/warranty'
+      preLoaderRoute: typeof WarrantyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cases/': {
@@ -197,7 +297,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AssistantRoute: AssistantRoute,
+  AutomationRoute: AutomationRoute,
+  KnowledgeRoute: KnowledgeRoute,
   ProductsRoute: ProductsRoute,
+  PromptsRoute: PromptsRoute,
+  WarrantyRoute: WarrantyRoute,
   CasesIdRoute: CasesIdRoute,
   CustomersIdRoute: CustomersIdRoute,
   OrdersIdRoute: OrdersIdRoute,

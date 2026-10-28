@@ -10,11 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApprovalsRouteImport } from './routes/approvals'
 import { Route as AssistantRouteImport } from './routes/assistant'
+import { Route as AuditRouteImport } from './routes/audit'
 import { Route as AutomationRouteImport } from './routes/automation'
+import { Route as DemoRouteImport } from './routes/demo'
 import { Route as KnowledgeRouteImport } from './routes/knowledge'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as PromptsRouteImport } from './routes/prompts'
+import { Route as QueuesRouteImport } from './routes/queues'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as SecurityRouteImport } from './routes/security'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as WarrantyRouteImport } from './routes/warranty'
 import { Route as CasesIndexRouteImport } from './routes/cases.index'
 import { Route as CasesIdRouteImport } from './routes/cases.$id'
@@ -28,14 +35,29 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApprovalsRoute = ApprovalsRouteImport.update({
+  id: '/approvals',
+  path: '/approvals',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AssistantRoute = AssistantRouteImport.update({
   id: '/assistant',
   path: '/assistant',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuditRoute = AuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AutomationRoute = AutomationRouteImport.update({
   id: '/automation',
   path: '/automation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoRoute = DemoRouteImport.update({
+  id: '/demo',
+  path: '/demo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KnowledgeRoute = KnowledgeRouteImport.update({
@@ -51,6 +73,26 @@ const ProductsRoute = ProductsRouteImport.update({
 const PromptsRoute = PromptsRouteImport.update({
   id: '/prompts',
   path: '/prompts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QueuesRoute = QueuesRouteImport.update({
+  id: '/queues',
+  path: '/queues',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SecurityRoute = SecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WarrantyRoute = WarrantyRouteImport.update({
@@ -91,11 +133,18 @@ const OrdersIdRoute = OrdersIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/approvals': typeof ApprovalsRoute
   '/assistant': typeof AssistantRoute
+  '/audit': typeof AuditRoute
   '/automation': typeof AutomationRoute
+  '/demo': typeof DemoRoute
   '/knowledge': typeof KnowledgeRoute
   '/products': typeof ProductsRoute
   '/prompts': typeof PromptsRoute
+  '/queues': typeof QueuesRoute
+  '/reports': typeof ReportsRoute
+  '/security': typeof SecurityRoute
+  '/settings': typeof SettingsRoute
   '/warranty': typeof WarrantyRoute
   '/cases/$id': typeof CasesIdRoute
   '/customers/$id': typeof CustomersIdRoute
@@ -106,11 +155,18 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/approvals': typeof ApprovalsRoute
   '/assistant': typeof AssistantRoute
+  '/audit': typeof AuditRoute
   '/automation': typeof AutomationRoute
+  '/demo': typeof DemoRoute
   '/knowledge': typeof KnowledgeRoute
   '/products': typeof ProductsRoute
   '/prompts': typeof PromptsRoute
+  '/queues': typeof QueuesRoute
+  '/reports': typeof ReportsRoute
+  '/security': typeof SecurityRoute
+  '/settings': typeof SettingsRoute
   '/warranty': typeof WarrantyRoute
   '/cases/$id': typeof CasesIdRoute
   '/customers/$id': typeof CustomersIdRoute
@@ -122,11 +178,18 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/approvals': typeof ApprovalsRoute
   '/assistant': typeof AssistantRoute
+  '/audit': typeof AuditRoute
   '/automation': typeof AutomationRoute
+  '/demo': typeof DemoRoute
   '/knowledge': typeof KnowledgeRoute
   '/products': typeof ProductsRoute
   '/prompts': typeof PromptsRoute
+  '/queues': typeof QueuesRoute
+  '/reports': typeof ReportsRoute
+  '/security': typeof SecurityRoute
+  '/settings': typeof SettingsRoute
   '/warranty': typeof WarrantyRoute
   '/cases/$id': typeof CasesIdRoute
   '/customers/$id': typeof CustomersIdRoute
@@ -139,11 +202,18 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/approvals'
     | '/assistant'
+    | '/audit'
     | '/automation'
+    | '/demo'
     | '/knowledge'
     | '/products'
     | '/prompts'
+    | '/queues'
+    | '/reports'
+    | '/security'
+    | '/settings'
     | '/warranty'
     | '/cases/$id'
     | '/customers/$id'
@@ -154,11 +224,18 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/approvals'
     | '/assistant'
+    | '/audit'
     | '/automation'
+    | '/demo'
     | '/knowledge'
     | '/products'
     | '/prompts'
+    | '/queues'
+    | '/reports'
+    | '/security'
+    | '/settings'
     | '/warranty'
     | '/cases/$id'
     | '/customers/$id'
@@ -169,11 +246,18 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/approvals'
     | '/assistant'
+    | '/audit'
     | '/automation'
+    | '/demo'
     | '/knowledge'
     | '/products'
     | '/prompts'
+    | '/queues'
+    | '/reports'
+    | '/security'
+    | '/settings'
     | '/warranty'
     | '/cases/$id'
     | '/customers/$id'
@@ -185,11 +269,18 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApprovalsRoute: typeof ApprovalsRoute
   AssistantRoute: typeof AssistantRoute
+  AuditRoute: typeof AuditRoute
   AutomationRoute: typeof AutomationRoute
+  DemoRoute: typeof DemoRoute
   KnowledgeRoute: typeof KnowledgeRoute
   ProductsRoute: typeof ProductsRoute
   PromptsRoute: typeof PromptsRoute
+  QueuesRoute: typeof QueuesRoute
+  ReportsRoute: typeof ReportsRoute
+  SecurityRoute: typeof SecurityRoute
+  SettingsRoute: typeof SettingsRoute
   WarrantyRoute: typeof WarrantyRoute
   CasesIdRoute: typeof CasesIdRoute
   CustomersIdRoute: typeof CustomersIdRoute
@@ -208,6 +299,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/approvals': {
+      id: '/approvals'
+      path: '/approvals'
+      fullPath: '/approvals'
+      preLoaderRoute: typeof ApprovalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/assistant': {
       id: '/assistant'
       path: '/assistant'
@@ -215,11 +313,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AssistantRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/audit': {
+      id: '/audit'
+      path: '/audit'
+      fullPath: '/audit'
+      preLoaderRoute: typeof AuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/automation': {
       id: '/automation'
       path: '/automation'
       fullPath: '/automation'
       preLoaderRoute: typeof AutomationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo': {
+      id: '/demo'
+      path: '/demo'
+      fullPath: '/demo'
+      preLoaderRoute: typeof DemoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/knowledge': {
@@ -241,6 +353,34 @@ declare module '@tanstack/react-router' {
       path: '/prompts'
       fullPath: '/prompts'
       preLoaderRoute: typeof PromptsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/queues': {
+      id: '/queues'
+      path: '/queues'
+      fullPath: '/queues'
+      preLoaderRoute: typeof QueuesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/security': {
+      id: '/security'
+      path: '/security'
+      fullPath: '/security'
+      preLoaderRoute: typeof SecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/warranty': {
@@ -297,11 +437,18 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApprovalsRoute: ApprovalsRoute,
   AssistantRoute: AssistantRoute,
+  AuditRoute: AuditRoute,
   AutomationRoute: AutomationRoute,
+  DemoRoute: DemoRoute,
   KnowledgeRoute: KnowledgeRoute,
   ProductsRoute: ProductsRoute,
   PromptsRoute: PromptsRoute,
+  QueuesRoute: QueuesRoute,
+  ReportsRoute: ReportsRoute,
+  SecurityRoute: SecurityRoute,
+  SettingsRoute: SettingsRoute,
   WarrantyRoute: WarrantyRoute,
   CasesIdRoute: CasesIdRoute,
   CustomersIdRoute: CustomersIdRoute,

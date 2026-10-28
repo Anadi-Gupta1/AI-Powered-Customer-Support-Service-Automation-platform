@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { ArrowLeft, ArrowRight, RotateCcw, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useSim } from "@/lib/sim/store";
@@ -30,7 +30,7 @@ function Demo() {
   const [step, setStep] = useState(0);
   const s = STEPS[step];
   const c1 = state.cases.find((c) => c.id === "case-1001");
-  const helpers: Record<number, React.ReactNode> = {
+  const helpers: Record<number, ReactNode> = {
     1: <Button size="sm" variant="outline" onClick={() => run(loadScenario, 1)}>Load Demo Scenario (no duplicates)</Button>,
     2: <Button size="sm" variant="outline" onClick={() => run(runCaseAssignment, "case-1001")}>Run assignment on CS-1001</Button>,
     3: <Button size="sm" variant="outline" onClick={() => run(generateAI, "case-1001", "summary")}>Generate CS-1001 summary</Button>,

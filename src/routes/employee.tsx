@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Bot, ChevronDown, ChevronLeft, ChevronRight, Circle, CheckCircle2, Clock, Download, Expand, FileJson, Loader2, LogOut, PanelLeftClose, PanelRightClose, Pause, Play, PlayCircle, RotateCcw, SkipForward, Shrink, XCircle, MinusCircle, Hand } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";

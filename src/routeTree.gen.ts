@@ -15,6 +15,7 @@ import { Route as AssistantRouteImport } from './routes/assistant'
 import { Route as AuditRouteImport } from './routes/audit'
 import { Route as AutomationRouteImport } from './routes/automation'
 import { Route as DemoRouteImport } from './routes/demo'
+import { Route as EmployeeRouteImport } from './routes/employee'
 import { Route as KnowledgeRouteImport } from './routes/knowledge'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as PromptsRouteImport } from './routes/prompts'
@@ -58,6 +59,11 @@ const AutomationRoute = AutomationRouteImport.update({
 const DemoRoute = DemoRouteImport.update({
   id: '/demo',
   path: '/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmployeeRoute = EmployeeRouteImport.update({
+  id: '/employee',
+  path: '/employee',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KnowledgeRoute = KnowledgeRouteImport.update({
@@ -138,6 +144,7 @@ export interface FileRoutesByFullPath {
   '/audit': typeof AuditRoute
   '/automation': typeof AutomationRoute
   '/demo': typeof DemoRoute
+  '/employee': typeof EmployeeRoute
   '/knowledge': typeof KnowledgeRoute
   '/products': typeof ProductsRoute
   '/prompts': typeof PromptsRoute
@@ -160,6 +167,7 @@ export interface FileRoutesByTo {
   '/audit': typeof AuditRoute
   '/automation': typeof AutomationRoute
   '/demo': typeof DemoRoute
+  '/employee': typeof EmployeeRoute
   '/knowledge': typeof KnowledgeRoute
   '/products': typeof ProductsRoute
   '/prompts': typeof PromptsRoute
@@ -183,6 +191,7 @@ export interface FileRoutesById {
   '/audit': typeof AuditRoute
   '/automation': typeof AutomationRoute
   '/demo': typeof DemoRoute
+  '/employee': typeof EmployeeRoute
   '/knowledge': typeof KnowledgeRoute
   '/products': typeof ProductsRoute
   '/prompts': typeof PromptsRoute
@@ -207,6 +216,7 @@ export interface FileRouteTypes {
     | '/audit'
     | '/automation'
     | '/demo'
+    | '/employee'
     | '/knowledge'
     | '/products'
     | '/prompts'
@@ -229,6 +239,7 @@ export interface FileRouteTypes {
     | '/audit'
     | '/automation'
     | '/demo'
+    | '/employee'
     | '/knowledge'
     | '/products'
     | '/prompts'
@@ -251,6 +262,7 @@ export interface FileRouteTypes {
     | '/audit'
     | '/automation'
     | '/demo'
+    | '/employee'
     | '/knowledge'
     | '/products'
     | '/prompts'
@@ -274,6 +286,7 @@ export interface RootRouteChildren {
   AuditRoute: typeof AuditRoute
   AutomationRoute: typeof AutomationRoute
   DemoRoute: typeof DemoRoute
+  EmployeeRoute: typeof EmployeeRoute
   KnowledgeRoute: typeof KnowledgeRoute
   ProductsRoute: typeof ProductsRoute
   PromptsRoute: typeof PromptsRoute
@@ -332,6 +345,13 @@ declare module '@tanstack/react-router' {
       path: '/demo'
       fullPath: '/demo'
       preLoaderRoute: typeof DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/employee': {
+      id: '/employee'
+      path: '/employee'
+      fullPath: '/employee'
+      preLoaderRoute: typeof EmployeeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/knowledge': {
@@ -442,6 +462,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuditRoute: AuditRoute,
   AutomationRoute: AutomationRoute,
   DemoRoute: DemoRoute,
+  EmployeeRoute: EmployeeRoute,
   KnowledgeRoute: KnowledgeRoute,
   ProductsRoute: ProductsRoute,
   PromptsRoute: PromptsRoute,
